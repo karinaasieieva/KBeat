@@ -24,6 +24,8 @@ export interface DoctorProfile {
   bio: LocalizedText;
   branch: LocalizedText;
   photoPath?: string;
+  photoPosition?: string;
+  photoScale?: number;
 }
 
 export interface BranchLocation {
@@ -83,4 +85,8 @@ export interface SiteCopy {
   teamEyebrow: string;
   teamNeedsTitle: string;
   licenseNotice: string;
+  mapCardTitle: string;
+  mapCardBody: string;
+  openMapLabel: string;
+  navigationLabel: string;
 }

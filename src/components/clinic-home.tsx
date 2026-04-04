@@ -44,6 +44,7 @@ export function ClinicHome() {
   const [comingSoonService, setComingSoonService] = useState<string | null>(null);
 
   const copy = siteCopy[locale];
+  const instagramLink = socialLinks.find((link) => link.label === "Instagram")?.href ?? "#";
 
   const locationCards = useMemo(
     () => branches.map((branch) => ({ district: t(branch.district, locale), phone: branch.phone })),
@@ -52,6 +53,14 @@ export function ClinicHome() {
 
   function showComingSoon(serviceName: string) {
     setComingSoonService(serviceName);
+  }
+
+  function getMapSearchUrl(address: string) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  }
+
+  function getNavigationUrl(address: string) {
+    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}&travelmode=driving`;
   }
 
   return (
@@ -529,13 +538,14 @@ export function ClinicHome() {
             {doctors.map((doctor, index) => (
               <article key={`${doctor.name}-${index}`} className="overflow-hidden rounded-[1.9rem] border border-[var(--line)] bg-white/90 lg:grid lg:grid-cols-[0.8fr_1.2fr]">
                 <div className="flex min-h-[420px] items-end justify-start bg-[linear-gradient(180deg,rgba(243,232,220,0.5),rgba(199,172,145,0.35))] p-5">
-                  <div className="relative h-full min-h-[380px] w-full overflow-hidden rounded-[1.4rem] border border-[var(--line)] bg-white/70">
+                  <div className="relative h-full min-h-[380px] w-full overflow-hidden rounded-[1.4rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(247,240,230,0.9),rgba(255,255,255,0.98))]">
                     <Image
                       src={assetPaths.doctorPhoto}
                       alt={doctor.name}
                       fill
-                      className="object-cover object-center"
+                      className="object-contain"
                       sizes="(max-width: 1024px) 100vw, 40vw"
+                      style={{ objectPosition: doctor.photoPosition ?? "center center" }}
                     />
                   </div>
                 </div>
@@ -612,7 +622,9 @@ export function ClinicHome() {
             <p className="font-display mt-4 text-4xl">{copy.hoursValue}</p>
             <div className="mt-8 flex items-center gap-3 text-[var(--muted)]">
               <Camera className="h-4 w-4" />
-              <a href="https://www.instagram.com/estetic_cosmetology_/">Instagram</a>
+              <a href={instagramLink} target="_blank" rel="noreferrer">
+                Instagram
+              </a>
             </div>
           </div>
 
@@ -629,16 +641,65 @@ export function ClinicHome() {
                           {t(branch.district, locale)}
                         </p>
                       </div>
-                      <p className="mt-3 text-lg font-semibold">{t(branch.address, locale)}</p>
+                      <a
+                        href={getMapSearchUrl(t(branch.address, locale))}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 block text-lg font-semibold transition hover:text-[var(--accent-strong)]"
+                      >
+                        {t(branch.address, locale)}
+                      </a>
                       <a href={`tel:${branch.phone}`} className="mt-3 block text-sm text-[var(--muted)]">
                         066 8888838
                       </a>
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <a
+                          href={getMapSearchUrl(t(branch.address, locale))}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-[var(--line)] bg-[var(--surface-strong)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--foreground)]"
+                        >
+                          {copy.openMapLabel}
+                        </a>
+                        <a
+                          href={getNavigationUrl(t(branch.address, locale))}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full bg-[var(--accent-strong)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:opacity-90"
+                        >
+                          {copy.navigationLabel}
+                        </a>
+                      </div>
                     </article>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">{copy.quickLinksLabel}</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">{copy.mapCardTitle}</p>
+                <a
+                  href={getNavigationUrl(t(branches[0].address, locale))}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 block rounded-[1.7rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(245,236,226,0.94))] p-5 transition hover:-translate-y-0.5 hover:border-[var(--accent)]"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
+                        {copy.mapCardTitle}
+                      </p>
+                      <p className="mt-3 text-lg font-semibold text-[var(--foreground)]">
+                        {t(branches[0].address, locale)}
+                      </p>
+                    </div>
+                    <MapPin className="mt-1 h-5 w-5 text-[var(--accent-strong)]" />
+                  </div>
+                  <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{copy.mapCardBody}</p>
+                  <div className="mt-5 flex items-center justify-between rounded-[1.2rem] border border-[var(--line)] bg-white/80 px-4 py-3 text-sm text-[var(--muted)]">
+                    <span>{copy.navigationLabel}</span>
+                    <ChevronRight className="h-4 w-4 text-[var(--accent)]" />
+                  </div>
+                </a>
+                <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[var(--muted)]">{copy.quickLinksLabel}</p>
                 <div className="mt-5 grid gap-3">
                   {footerLinks.map((link) => (
                     <a

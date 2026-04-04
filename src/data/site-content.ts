@@ -38,8 +38,8 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       "На главной странице уже выделен основной специалист Karina Asieieva. Ее биография может быть добавлена позже без перестройки макета.",
     equipmentTitle: "Оборудование и лицензии",
     equipmentBody:
-      "Наличие лицензии МОЗ Украины позволяет безопасно выполнять инъекционные и лазерные процедуры. Сертификат клиники выделен отдельным блоком и подготовлен под реальное изображение документа.",
-    certificatePlaceholder: "Основной сертификат клиники будет размещен здесь",
+      "Наличие лицензии МОЗ Украины позволяет безопасно выполнять инъекционные и лазерные процедуры. Ниже показан реальный сертификат клиники.",
+    certificatePlaceholder: "Сертификат клиники",
     videoPlaceholder: "Здесь будет видео-презентация Karina Estetic Studio",
     doctorsPlaceholder: "Фото доктора будет добавлено здесь",
     licenseLabel: "Лицензия МОЗ Украины",
@@ -58,7 +58,11 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     popularSectionBody: "Ключевые направления клиники собраны здесь, чтобы посетитель сразу видел основные запросы и специализацию студии.",
     teamEyebrow: "Главный специалист",
     teamNeedsTitle: "Что еще можно добавить позже",
-    licenseNotice: "Сертификат получен и подготовлен к размещению на главной странице после добавления файла в проект.",
+    licenseNotice: "Официальный сертификат клиники, размещенный на главной странице.",
+    mapCardTitle: "Google Maps",
+    mapCardBody: "Откройте точку клиники на карте или сразу постройте маршрут до Karina Estetic Studio.",
+    openMapLabel: "Открыть карту",
+    navigationLabel: "Маршрут",
   },
   ua: {
     topBar: "Працюємо при відключеннях електрики",
@@ -85,8 +89,8 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       "На головній сторінці вже виділений головний спеціаліст Karina Asieieva. Її детальну біографію та додаткові сертифікати можна додати пізніше без зміни структури сторінки.",
     equipmentTitle: "Обладнання та ліцензії",
     equipmentBody:
-      "Наявність ліцензії МОЗ України дозволяє безпечно виконувати ін'єкційні та лазерні процедури. Сертифікат клініки винесений в окремий блок і готовий до заміни на реальне зображення документа.",
-    certificatePlaceholder: "Головний сертифікат клініки буде розміщений тут",
+      "Наявність ліцензії МОЗ України дозволяє безпечно виконувати ін'єкційні та лазерні процедури. Нижче показано реальний сертифікат клініки.",
+    certificatePlaceholder: "Сертифікат клініки",
     videoPlaceholder: "Тут буде відео-презентація Karina Estetic Studio",
     doctorsPlaceholder: "Фото лікаря буде додано тут",
     licenseLabel: "Ліцензія МОЗ України",
@@ -105,7 +109,11 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     popularSectionBody: "Ключові напрями клініки зібрані тут, щоб відвідувач одразу бачив основні запити та спеціалізацію студії.",
     teamEyebrow: "Головний спеціаліст",
     teamNeedsTitle: "Що ще можна додати пізніше",
-    licenseNotice: "Сертифікат отримано і підготовлено до розміщення на головній сторінці після додавання файлу в проєкт.",
+    licenseNotice: "Офіційний сертифікат клініки, розміщений на головній сторінці.",
+    mapCardTitle: "Google Maps",
+    mapCardBody: "Відкрийте точку клініки на карті або одразу побудуйте маршрут до Karina Estetic Studio.",
+    openMapLabel: "Відкрити карту",
+    navigationLabel: "Навігація",
   },
   en: {
     topBar: "We work during power outages",
@@ -132,8 +140,8 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       "Karina Asieieva is already featured on the homepage as the lead specialist. A full biography can be added later without changing the layout structure.",
     equipmentTitle: "Equipment and certificates",
     equipmentBody:
-      "The clinic operates under a Ministry of Health of Ukraine medical license, allowing safe injectable and laser procedures. The license certificate area is prepared for the real document image.",
-    certificatePlaceholder: "The clinic certificate will be shown here",
+      "The clinic operates under a Ministry of Health of Ukraine medical license, allowing safe injectable and laser procedures. The real clinic certificate is shown below.",
+    certificatePlaceholder: "Clinic certificate",
     videoPlaceholder: "Karina Estetic Studio presentation video goes here",
     doctorsPlaceholder: "Doctor portrait will be added here",
     licenseLabel: "Ministry of Health of Ukraine license",
@@ -152,7 +160,11 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     popularSectionBody: "The core clinic directions are gathered here so visitors can immediately understand the studio's main expertise.",
     teamEyebrow: "Lead specialist",
     teamNeedsTitle: "Can be added later",
-    licenseNotice: "The certificate has been received and is ready to be placed on the homepage once the file is added to the project.",
+    licenseNotice: "Official clinic certificate displayed on the homepage.",
+    mapCardTitle: "Google Maps",
+    mapCardBody: "Open the clinic pin on the map or start turn-by-turn navigation to Karina Estetic Studio.",
+    openMapLabel: "Open map",
+    navigationLabel: "Directions",
   },
 };
 
@@ -394,6 +406,8 @@ export const doctors: DoctorProfile[] = [
       en: "A short biography will be added later. The card is already prepared for the real portrait, description, and certificates.",
     },
     branch: { ru: "Днепр", ua: "Дніпро", en: "Dnipro" },
+    photoPosition: "center center",
+    photoScale: 1,
   },
 ];
 
