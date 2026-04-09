@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Deployment
+
+This project is deployed on Hetzner with Next.js running behind nginx.
+
+- Server app path: `/var/www/karinaestetic-beauty`
+- Process manager: `systemd` service `kbeat`
+- Local app listener: `127.0.0.1:3010`
+- Public reverse proxy: `nginx`
+
+Deployment steps and cutover notes are documented in `docs/deployment-hetzner.md`.
+
 ## Getting Started
 
 First, run the development server:
